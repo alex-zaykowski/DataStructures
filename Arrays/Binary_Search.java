@@ -3,19 +3,19 @@
  */
 class Solution {
     public int search(int[] nums, int target) {
-        return binarySearch(nums, nums.length - 1, 0, target);
+        return binarySearch(nums, 0, nums.length -1, target);
     }
-    private int binarySearch(int[] nums, int high, int low, int target){
-        int mid = low + (high - low)/2;
+    private int binarySearch(int[] nums, int low, int high, int target){
         if(high < low){
             return -1;
         }
+        int mid = (high + low)/2;
         if(nums[mid] == target){
             return mid;
         }else if(nums[mid] > target){
-            return binarySearch(nums, mid - 1, low, target);
+            return binarySearch(nums, low, mid - 1, target);
         }else{
-            return binarySearch(nums, high, mid + 1, target);
+            return binarySearch(nums, mid + 1, high, target);
         }
     }
 }
